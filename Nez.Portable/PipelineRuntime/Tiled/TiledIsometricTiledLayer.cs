@@ -15,8 +15,12 @@ namespace Nez.Tiled
 		public TiledIsometricTiledLayer( TiledMap map, string name, int width, int height ) : this( map, name, width, height, new TiledTile[width * height] )
 		{ }
 
+        public override void draw(Batcher batcher, Vector2 position, float layerDepth, RectangleF cameraClipBounds)
+        {
+            this.draw(batcher, position, Vector2.One, layerDepth, cameraClipBounds);
+        }
 
-		public override void draw( Batcher batcher, Vector2 position, float layerDepth, RectangleF cameraClipBounds )
+        public override void draw( Batcher batcher, Vector2 position, Vector2 scale, float layerDepth, RectangleF cameraClipBounds )
 		{
 			// offset render position by the layer offset, used for isometric layer depth
 			position += offset;
